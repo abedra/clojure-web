@@ -1,0 +1,19 @@
+# Basic Compojure Example
+
+This will serve as the building block for all the rest of the web examples
+
+## Usage
+
+* Start a repl or swank
+* (use 'basic.core)
+* (start)
+
+## Installation
+
+lein deps
+
+## License
+
+Copyright (C) 2010 Aaron Bedra
+
+Distributed under the Eclipse Public License, the same as Clojure.
