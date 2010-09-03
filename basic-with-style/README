@@ -1,0 +1,20 @@
+# Basic Compojure Example
+
+Expands on the basic example, adding in hiccup and compojure's routing helpers to
+create a stylized version of the example.
+
+## Usage
+
+* Start a repl or swank
+* (use 'basic.core)
+* (start)
+
+## Installation
+
+lein deps
+
+## License
+
+Copyright (C) 2010 Aaron Bedra
+
+Distributed under the Eclipse Public License, the same as Clojure.
