@@ -1,0 +1,23 @@
+# Basic Compojure Example
+
+Expands on the basic example, adding authentication and role based
+authorization.
+
+## Usage
+
+* Start a repl or swank
+* (use 'basic.core)
+* (start)
+
+You can login as a standard user with username example and password password.
+You can login as an admin with username admin and password password
+
+## Installation
+
+lein deps
+
+## License
+
+Copyright (C) 2010 Aaron Bedra
+
+Distributed under the Eclipse Public License, the same as Clojure.
