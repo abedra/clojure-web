@@ -5,5 +5,6 @@ This is a collection of clojure projects focused on making some sense out of web
 * basic
 * basic-with-style
 * basic-with-authentication
+* separation-anxiety
 
 This will be updated as more projects are introduced.
