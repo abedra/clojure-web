@@ -36,3 +36,4 @@ h1 span a { color: #fff; opacity: 0.25; -webkit-transition-duration: .20s; -webk
 h1 span a#home { color: transparent; background: transparent url(/images/home.png) 0 0 no-repeat; text-indent: -9999px; }
 h1 span a:hover { opacity: 1; }
 #greeting { font-size: 2.0em; }
+.login-form { margin: 0 auto; width: 400px; }

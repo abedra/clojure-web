@@ -15,9 +15,10 @@
     [:div {:id "header"}
      [:h1 "Basic Compojure Application with Styles"
       [:span [:a {:href "/" :id "home"} "Home"]]
-      [:span (link-to "/logout" "Logout")]
       (when (any-role-granted? :admin)
-        [:span (link-to "/admin" "Admin")])]]
+        [:span (link-to "/admin" "Admin")])
+      (when (current-user)
+        [:span (link-to "/logout" "Logout")])]]
     [:div {:id "content"} body ]]))
 
 (defn index []

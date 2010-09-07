@@ -14,7 +14,7 @@
             [basic-with-authentication.html :as html]))
 
 (def security-policy
-  [#".*\.(css|js|png|jpg|gif)$" :any
+  [#".*\.(css|js|png|jpg|gif|ico)$" :any
    #"/login.*" :any
    #"/logout.*" :any
    #"/permission-denied.*" :any
