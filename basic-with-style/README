@@ -6,7 +6,7 @@ create a stylized version of the example.
 ## Usage
 
 * Start a repl or swank
-* (use 'basic.core)
+* (use 'basic-with-style.core)
 * (start)
 
 ## Installation

@@ -6,7 +6,7 @@ authorization.
 ## Usage
 
 * Start a repl or swank
-* (use 'basic.core)
+* (use 'basic-with-authentication.core)
 * (start)
 
 You can login as a standard user with username example and password password.
