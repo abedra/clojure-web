@@ -46,3 +46,9 @@
    restarted with every change"
   (run-jetty (var application-routes) {:port 8080
                                        :join? false}))
+
+;; a different way to define the server is given here.
+;; the ability to start/stop several different servers is usefull
+(defonce server (run-jetty #'application-routes {:port 8080 :join? false}))
+(defn start [] (.start server))
+(defn stop [] (.stop server))

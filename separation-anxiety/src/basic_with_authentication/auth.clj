@@ -5,15 +5,19 @@
 (defrecord AuthAdapter []
   FormAuthAdapter
   (load-user [this username password]
-             (cond (= username "example")
-                   {:username "example" :password "password" :roles #{:user}}
-                   (= username "admin")
-                   {:username "admin" :password "password" :roles #{:admin}}))
+             (let [login {:username username :password password}]
+		 (cond (= username "example")
+		       (merge login {:roles #{:user}})
+		       (= username "admin")
+		       (merge login {:roles #{:admin}}))))
   (validate-password [this]
-                     (fn [m]
-                       (if (= (:password m) "password")
-                         m
-                         (add-validation-error m "Unable to authenticate user.")))))
+		     (fn [m]
+		       (let [userbase
+			     {"example" "password"
+			      "admin" "secret"}]
+			 (if (= (userbase (:username m)) (:password m) )
+			   m
+			   (add-validation-error m "Unable to authenticate user."))))))
 
 (defn form-authentication-adapter []
   (merge

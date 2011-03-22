@@ -1,15 +1,9 @@
 (ns basic-with-authentication.core-test
   (:use [basic-with-authentication.core] :reload-all)
-  (:use clojure.test
-	ring.middleware.params)
+  (:use [clojure.test])
   (:use (sandbar core
                  stateful-session
-                 form-authentication
-                 [test :only (t)])
-	)
-  (:require [basic-with-authentication.auth :as auth]
-            [basic-with-authentication.html :as html]
-	    [ring.util.test :as tu]))
+                 form-authentication)))
 
 (def session-key :sandbar.stateful-session/session)
 
@@ -56,37 +50,36 @@
       (is (= "screen.css" (.getName (response :body)))))))
 
 (deftest test-login-validator
-  (is (= ((login-validator (auth/form-authentication-adapter)) {})
+  (is (= ((login-validator (form-authentication-adapter)) {})
 	 {:_validation-errors {:password ["You must supply a password."],
 			       :username ["You must supply a valid username."]}}))
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:username "example"})
 	 {:_validation-errors {:password ["You must supply a password."]}
 	  :username "example"}))
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:password "password"})
 	 {:_validation-errors {:username ["You must supply a valid username."]}
 	  :password "password"}))
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:username "example" :password "wrong"})
 	 {:_validation-errors {:form ["Unable to authenticate user."]}
 	  :username "example", :password "wrong"}))
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:username "example" :password "password"})
 	 {:username "example" :password "password"}))
   ;; admin has a secret password
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:username "admin" :password "secret"})
 	 {:username "admin" :password "secret"}))
   ;; unknown users are denided access, even if they know the password
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:username "unknown" :password "password"})
 	 {:_validation-errors {:form ["Unable to authenticate user."]}
 	  :username "unknown" :password "password"}))
   ;; unknown users that supply a wrong password, are denied access.
-  (is (= ((login-validator (auth/form-authentication-adapter))
+  (is (= ((login-validator (form-authentication-adapter))
 	  {:username "unknown" :password "wrong"})
 	 {:_validation-errors {:form ["Unable to authenticate user."]}
 	  :username "unknown", :password "wrong"})))
-
 
