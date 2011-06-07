@@ -1,4 +1,4 @@
-(ns basic-with-authentication.core
+(ns separation-anxiety.core
   "Basic compojure Hello World Example with authentication
    and role based authorization using sandbar"
   (:use [ring.adapter.jetty :only [run-jetty]]
