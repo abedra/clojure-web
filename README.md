@@ -1,3 +1,5 @@
+## This project is no longer under active development
+
 # Clojure Web
 
 This is a collection of clojure projects focused on making some sense out of web development on clojure.  It starts with a basic example and builds things up one idea at a time.  Each concept is separated into it's own project and builds on all previous examples. There are detailed README files in each project that will help get you going.  The current flow of projects (i.e. the way you should work through them) is:
